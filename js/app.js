@@ -30,7 +30,10 @@ function init() {
 }
 function render() {
     updateBoard();
+    checkForWinner();
+    checkForTie();
     updateMessage();
+    turn *= -1;
 }
 function updateBoard() {
     board.forEach((square, idx) => {
@@ -61,6 +64,20 @@ function handleClick(evt) {
     if (board[targetID] !== 0 || winner)
         return;
     board[targetID] = turn;
-    turn *= -1;
     render();
+}
+function checkForWinner() {
+    winCombos.forEach(combo => {
+        let total = 0;
+        combo.forEach(idx => {
+            total += board[idx];
+        });
+        if (Math.abs(total) === 3)
+            winner = true;
+    });
+}
+function checkForTie() {
+    if (board.includes(0))
+        return;
+    tie = true;
 }
