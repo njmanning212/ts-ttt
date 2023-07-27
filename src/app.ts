@@ -78,8 +78,8 @@ function handleClick(evt: MouseEvent): void {
   board[targetID] = turn
   checkForWinner()
   checkForTie()
+  switchTurn()
   render()
-  turn *= -1
 }
 
 function checkForWinner (): void {
@@ -95,4 +95,9 @@ function checkForWinner (): void {
 function checkForTie (): void {
   if (board.includes(0)) return
   tie = true
+}
+
+function switchTurn (): void {
+  if (winner || tie) return
+  turn *= -1
 }

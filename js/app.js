@@ -67,8 +67,8 @@ function handleClick(evt) {
     board[targetID] = turn;
     checkForWinner();
     checkForTie();
+    switchTurn();
     render();
-    turn *= -1;
 }
 function checkForWinner() {
     winCombos.forEach(combo => {
@@ -84,4 +84,9 @@ function checkForTie() {
     if (board.includes(0))
         return;
     tie = true;
+}
+function switchTurn() {
+    if (winner || tie)
+        return;
+    turn *= -1;
 }
