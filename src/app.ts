@@ -24,6 +24,8 @@ const boardEl = document.querySelector('.board') as HTMLDivElement
 
 //event listeners
 
+boardEl.addEventListener('click', handleClick)
+
 //functions
 
 init()
@@ -62,4 +64,14 @@ function updateMessage (): void {
   if (tie) {
     msgEl.innerText = `Tie Game!`
   }
+}
+
+function handleClick(evt: MouseEvent): void {
+  if (!evt.target) return
+  const target = evt.target as HTMLDivElement
+  const targetID = parseInt(target.id)
+  if (board[targetID] !== 0 || winner) return
+  board[targetID] = turn
+  turn *= -1
+  render()
 }
