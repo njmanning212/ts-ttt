@@ -29,6 +29,7 @@ function init() {
 }
 function render() {
     updateBoard();
+    updateMessage();
 }
 function updateBoard() {
     board.forEach((square, idx) => {
@@ -39,4 +40,15 @@ function updateBoard() {
             squareEls[idx].textContent = 'O';
         }
     });
+}
+function updateMessage() {
+    if (!winner && !tie) {
+        msgEl.innerText = `Player ${turn === 1 ? "X" : "O"}'s turn`;
+    }
+    if (winner) {
+        msgEl.innerText = `Player ${turn === 1 ? "X" : "O"} wins!`;
+    }
+    if (tie) {
+        msgEl.innerText = `Tie Game!`;
+    }
 }

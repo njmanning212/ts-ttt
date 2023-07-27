@@ -38,6 +38,7 @@ function init(): void {
 
 function render(): void {
   updateBoard()
+  updateMessage()
 }
 
 function updateBoard(): void {
@@ -49,4 +50,16 @@ function updateBoard(): void {
       squareEls[idx].textContent = 'O'
     }
   })
+}
+
+function updateMessage (): void {
+  if (!winner && !tie) {
+    msgEl.innerText = `Player ${turn === 1 ? "X" : "O"}'s turn`
+  }
+  if (winner) {
+    msgEl.innerText = `Player ${turn === 1 ? "X" : "O"} wins!`
+  }
+  if (tie) {
+    msgEl.innerText = `Tie Game!`
+  }
 }
