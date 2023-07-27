@@ -25,6 +25,7 @@ const boardEl = document.querySelector('.board') as HTMLDivElement
 //event listeners
 
 boardEl.addEventListener('click', handleClick)
+resetBtnEl.addEventListener('click', init)
 
 //functions
 
@@ -50,6 +51,9 @@ function updateBoard(): void {
     }
     if (square === -1) {
       squareEls[idx].textContent = 'O'
+    }
+    if (square === 0) {
+      squareEls[idx].textContent = ''
     }
   })
 }

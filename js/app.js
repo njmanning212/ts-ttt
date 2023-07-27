@@ -19,6 +19,7 @@ const resetBtnEl = document.querySelector('button');
 const boardEl = document.querySelector('.board');
 //event listeners
 boardEl.addEventListener('click', handleClick);
+resetBtnEl.addEventListener('click', init);
 //functions
 init();
 function init() {
@@ -39,6 +40,9 @@ function updateBoard() {
         }
         if (square === -1) {
             squareEls[idx].textContent = 'O';
+        }
+        if (square === 0) {
+            squareEls[idx].textContent = '';
         }
     });
 }
