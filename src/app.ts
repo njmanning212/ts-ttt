@@ -40,10 +40,7 @@ function init(): void {
 
 function render(): void {
   updateBoard()
-  checkForWinner()
-  checkForTie()
   updateMessage()
-  turn *= -1
 }
 
 function updateBoard(): void {
@@ -75,7 +72,10 @@ function handleClick(evt: MouseEvent): void {
   const targetID = parseInt(target.id)
   if (board[targetID] !== 0 || winner) return
   board[targetID] = turn
+  checkForWinner()
+  checkForTie()
   render()
+  turn *= -1
 }
 
 function checkForWinner (): void {
