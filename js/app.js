@@ -17,3 +17,26 @@ const squareEls = document.querySelectorAll('.sqr');
 const msgEl = document.getElementById('message');
 const resetBtnEl = document.querySelector('button');
 const boardEl = document.querySelector('.board');
+//event listeners
+//functions
+init();
+function init() {
+    board = [0, 0, 0, 0, 0, 0, 0, 0, 0];
+    turn = 1;
+    winner = false;
+    tie = false;
+    render();
+}
+function render() {
+    updateBoard();
+}
+function updateBoard() {
+    board.forEach((square, idx) => {
+        if (square === 1) {
+            squareEls[idx].textContent = 'X';
+        }
+        if (square === -1) {
+            squareEls[idx].textContent = 'O';
+        }
+    });
+}
